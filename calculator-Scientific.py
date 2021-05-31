@@ -227,7 +227,7 @@ class Calculator:
                 # This helps to take care of cases where there's an implicit multiplication between a number or parentheses
                 # and a function, such as "3cos(27)" or "(4 - 2)ln(50)". In both cases we have to insert the × operator in between
                 if ((expression[i] in UNARY_OPERATORS) and expression[i] != "~" and expression[i] != "!") and i != 0 \
-                        and (expression[i - 1].isdigit() or expression[i - 1] == ")" or (expression[i] in CONSTANTS)):
+                        and (expression[i - 1].isdigit() or expression[i - 1] == ")" or (expression[i - 1] in CONSTANTS)):
                     stack.append("×")
 
                 while len(stack) > 0 and (not stack[len(stack) - 1] == "(") and self.__hasHigherPrecedence(stack[len(stack) - 1], expression[i]):
